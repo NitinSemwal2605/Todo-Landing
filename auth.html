@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Authentication Form</title>
+    <title>SignIn Form</title>
     <link rel="stylesheet" href="auth.css">
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
-        import { getAuth } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js';
-        import { getFirestore } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js';
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js';
+        import { getDatabase, ref, child, set } from 'https://www.gstatic.com/firebasejs/10.11.0/firebase-database.js';
 
         const firebaseConfig = {
           apiKey: "AIzaSyDT6mRe_U7mMrowuBloBgE5fjfc2hGCJ1M",
@@ -25,77 +25,98 @@
         // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
-        const database = getFirestore(app);  
+        const database = getDatabase(app, "https://gamiway-5d982-default-rtdb.asia-southeast1.firebasedatabase.app");  
 
- function togglePage(){
-    console.log("Clicked");
-    const container = document.getElementById('container');
-    container.classList.toggle('sign-in');
-    container.classList.toggle('sign-up');
-}      
+        setTimeout(() => {
+            const p = document.getElementById('Pagecontainer');
+            p.classList.add('sign-in');
+        }, 200);
 
-function register(){
-    const username = document.getElementById('username').value;
-    const mail = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const confirmPassword = document.getElementById('confirm-password').value;
-
-    if (validate_email(mail) == false || validate_password(password, confirmPassword) == false){
-        return;
-    }
-    if (validate_fields(username) == false){
-        return;
-    }
-
-    auth.createUserWithEmailAndPassword(mail, password).then(function (){
-        var user = auth.currentUser;
-        var database_ref = database.ref();
-        var user_data = {
-            username: username,
+        window.auth = auth;
+        window.database = database;
+        window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+        window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+        window.ref = ref;   
+        window.set = set;
+        window.child = child;
+    </script>
+    <script>
+        function togglePage() {
+            const p = document.getElementById('Pagecontainer');
+            p.classList.toggle('sign-in');
+            p.classList.toggle('sign-up');
         }
-        database_ref.child('users/' + user.uid).set(user_data);
-        togglePage();
-    }).catch(function (error){
-        console.log(error.message);
-    });
-}
 
-function validate_email(email) {
-    expression = /^[^@]+@\w+(\.\w+)+\w$/;
-    if (expression.test(email) == true) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+        function register(){
+            const username = document.getElementById('username').value;
+            const mail = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
 
-function validate_password(password, confirmPassword){
-    if (password < 6 || password != confirmPassword){
-        return false;
-    }else{
-        return true;
-    }
-}
+            if (validate_email(mail) == false || validate_password(password, confirmPassword) == false){
+                return;
+            }
+            if (validate_fields(username) == false){
+                return;
+            }
 
-function validate_fields(field){
-    if (field == null) {
-        return false;
-    }
-    if (field.length <= 0){
-        return false;
-    }else{
-        return true;
-    }
-}
+            createUserWithEmailAndPassword(auth, mail, password).then(function (){
+                var user = auth.currentUser;
+                var database_ref = ref(database);
+                var user_data = {
+                    username: username,
+                }
+                var db_ref = child(database_ref,'users/' + user.uid);
+                set(db_ref, user_data);
+                togglePage();
+            }).catch(function (error){
+                console.log(error.message);
+            });
+        }
 
-setTimeout(() => {
-    container.classList.add('sign-in')
-}, 200);
-</script>
+        function signIn(){
+            const email = document.getElementById('signin-email').value;
+            const password = document.getElementById('signin-password').value;
+            
+            signInWithEmailAndPassword(auth, email, password).then(function (){
+                window.location.href = "https://gamiway.vercel.app/";
+            }).catch(function (error){
+                console.log(error.message);
+            });
+        }
+
+        function validate_email(email) {
+            expression = /^[^@]+@\w+(\.\w+)+\w$/;
+            if (expression.test(email) == true) {
+              return true;
+            } else {
+              return false;
+            }
+        }
+
+        function validate_password(password, confirmPassword){
+            if (password.length < 6 || password != confirmPassword){
+                return false;
+            }else{
+                return true;
+            }
+        }
+
+        function validate_fields(field){
+            if (field == null) {
+                return false;
+            }
+            if (field.length <= 0){
+                return false;
+            }else{
+                return true;
+            }
+        }
+    </script>
 </head>
 
 <body>
-    <div id="container" class="container">
+    <div id="Pagecontainer" class="container">
         <!-- FORM SECTION -->
         <div class="row">
             <!-- SIGN UP -->
@@ -123,7 +144,7 @@ setTimeout(() => {
                                 <label for="confirm-password">Confirm password</label>
                                 <input type="password" id="confirm-password">
                             </div>
-                            <button onclick="register()">
+                            <button type="button" onclick="register()">
                                 Sign up
                             </button>
                         </form>
@@ -146,15 +167,15 @@ setTimeout(() => {
                         <form>
                             <div class="input-group">
                                 <i class='bx bxs-user'></i>
-                                <label for="signin-username">Username</label>
-                                <input type="text" id="signin-username">
+                                <label for="signin-email">Email</label>
+                                <input type="email" id="signin-email">
                             </div>
                             <div class="input-group">
                                 <i class='bx bxs-lock-alt'></i>
                                 <label for="signin-password">Password</label>
                                 <input type="password" id="signin-password">
                             </div>
-                            <button>
+                            <button type="button" onclick="signIn()">
                                 Sign in
                             </button>
                         </form>
@@ -172,8 +193,6 @@ setTimeout(() => {
                             </b>
                         </p>
                     </div>
-                </div>
-                <div class="form-wrapper">
                 </div>
             </div>
             <!-- END SIGN IN -->
