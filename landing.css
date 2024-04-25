@@ -1,0 +1,381 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'GameFont'; 
+    src: url("fonts/chatlong-font/Chatlong-zrro3.ttf");
+    font-weight: normal;
+}
+
+/* Global Styles */
+body {
+    font-family: 'GameFont', sans-serif;
+    background-color: #f4f4f4;
+}
+
+#mainPage {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; 
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #172842;
+    color: #fff;
+    padding: 20px 0;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo {
+    font-size: 24px;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.nav-links :hover{
+    text-decoration: underline solid #f4f4f4 2px;
+}
+
+.nav-links li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+@keyframes shakeeY{
+    10%, 90% {
+        transform: translateY(-1px);
+      }
+      20%, 80% {
+        transform: translateY(1px); 
+      }
+      30%, 50%, 70% {
+        transform: translateY(-1px); 
+      }
+      40%, 60% {
+        transform: translateY(1px); 
+      }
+}
+
+.animate__animated.animate__infinite{
+    animation-name: shakeeY;
+    --animate-duration: 1.5s;
+}
+
+.animate__animated.animate__fadeIn{
+    --animate-duration: 2s;
+    --animate-repeat: 1;
+}
+/* Hero Section */
+.hero {
+    position: absolute;
+    left: 0;
+    bottom: -100%;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 100px 0;
+    transition: bottom 0.5s ease-in;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+
+.hero-container{
+    padding-top: 30%;
+    max-width: 800px;
+    width: 100%;
+}
+
+.hero.slide-in{
+    position: relative;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+}
+
+.hidden{
+    display: none;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 50px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 60px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #172842;
+    color: #f4f4f4;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.fab{
+    margin-right: 4px;
+}
+
+.btn:hover {
+    background-color: #fff;
+    color: #172842;
+}
+
+.btn-row{
+    display: flex;
+    justify-content: center;
+}
+
+.btn-row .btn{
+    margin: 0 30px;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    padding-top: 15%;
+    background-color: #fff;
+    height: 100vh;
+}
+
+.about h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.about p {
+    overflow: hidden;
+    border-right: .15em solid #172842;
+    white-space: inherit;
+    margin: 0 auto;
+    letter-spacing: .15em;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    animation: 
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from {width: 0; height: 0}
+    to {width: 100%; height: 100%}
+}
+
+@keyframes blink-caret {
+    from, to {border-color: transparent}
+    50% {border-color: #172842;}
+}
+
+.about .btn:hover{
+    background-color: #f4f4f4;
+    color: #172842;
+}
+/* Add this CSS to your existing landing.css file or include it in a <style> tag in the <head> section */
+/* About Section */
+
+.about-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.left-div {
+    flex: 1;
+    margin-right: 40px; /* Increase spacing between left and right divs */
+}
+
+.right-div {
+    flex: 2;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    font-style: normal;
+}
+
+.left-div img {
+    max-width: 200%; /* Ensure the image doesn't exceed the container's width */
+    height: 350px; /* Allow the height to adjust automatically */ /* Increase the maximum height of the image */
+    object-fit: fill; /* Ensure the image covers the entire container */
+}
+
+.right-div {
+    display: flex;
+    margin-left: 25%; /* Increase spacing between left and right divs */
+    flex-direction: column;
+    align-items: center; /* Center align items horizontally */
+    text-align: center; /* Center align text */
+}
+
+.right-div p {
+    margin-bottom: 20px;
+    font-style: italic; /* Add quotes around text */
+}
+
+.btn {
+    display: inline-block;
+    background-color: #172842; /* Change button color to match primary color */
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Add transition effect */
+}
+
+.testimonials {
+    background: #172842;
+    color: #fff;
+    padding: 50px 0;
+}
+h1{
+    font-size: 40px;
+}
+h5{
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.testimonials-box {
+    display: flex;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    margin-top: 30px;
+}
+
+.testimonial:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+.title {    
+    text-align: center;
+}
+
+.testimonial {
+    background: #f4f4f4;
+    padding: 20px;
+    border-radius: 10px;
+    width: calc(30% - 20px); 
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.testimonial img {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.stars i {
+    margin-top: 10px;
+    color: #ffd000;
+}
+
+.testimonial p {
+    line-height: 1.6em;
+    display: block;
+    z-index: 2;
+    font-style: italic;
+    text-align: center;
+}
+
+.testimonial .info{
+    font-size: 16px;
+    color: #666;
+}
+
+.testimonial .names{
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 2px;
+}
+
+.information span{
+    font-size: 16px;
+    color: #333;
+}
+
+
+.icon i {
+    margin: 10px;
+    font-size: 20px;
+    color: #000;
+}
+
+@media (max-width: 768px) {
+    .testimonial {
+        width: calc(50% - 20px); 
+    }
+}
+
+@media (max-width: 576px) {
+    .testimonial {
+        width: 100%; 
+    }
+}
+
+/* Contact Section */
+.contact {
+    padding: 80px 0;
+    background-color: #f9f9f9;
+}
+
+.contact h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.contact p {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+}
+
+/* Footer */
+.footer {
+    background-color: #172842;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.footer p {
+    font-size: 14px;
+}

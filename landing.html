@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamiway Landing Page</title>
+    <link rel="stylesheet" href="landing.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.4/lottie.min.js"></script>
+</head>
+<body>
+    <!-- Navbar -->
+    
+    <nav class="navbar">
+        <div class="container">
+            <h1 class="logo">Gamiway</h1>
+            <ul class="nav-links">
+                <li><a href="#hero" onclick="scrollToSection('hero')">Home</a></li>
+                <li><a href="#about" onclick="scrollToSection('about')">About</a></li>
+                <li><a href="#contact" onclick="scrollToSection('contact')">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div id="mainPage"></div>
+    <!-- Hero Section -->
+    <section id="hero" class="hero hidden">
+        <div class="animate__animated animate__fadeIn">
+        <div class="hero-container animate__animated animate__infinite">
+            <h2>Welcome to Gamiway</h2>
+            <p>Keep track of your tasks and stay organized with our easy-to-use todo app.</p>
+            <div class="btn-row">
+            <a href="https://gamiway.vercel.app/" class="btn">Get Started</a>
+            <a href="https://github.com/NitinSemwal2614/Todo-Project" class="btn">
+                <i class="fab fa-github"></i>
+                Github
+            </a>
+            </div>
+        </div>
+        </div>
+    </section>
+    <!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-content">
+            <!-- Left Div for Photo -->
+            <div class="left-div">
+                <img src="sample.jpg" alt="About Us Photo">
+            </div>
+            <!-- Right Div for Text and Button -->
+            <div class="right-div">
+                <p>"Discover Gamiway: Your go-to todo app for effortless task management. Stay organized, meet deadlines, and boost productivity with ease."</p>
+                <a href="#" class="btn">Learn More</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="testimonials">
+    <div class="container">
+        <div class="title">
+            <h5>Testimonials</h5>
+            <h1>What our clients say?</h1>
+        </div>
+        <div class="testimonials-box">
+            <!-- Testimonial 1 -->
+            <div class="testimonial">
+                <div class="profile">
+                    <img src="https://img.freepik.com/free-photo/3d-illustration-young-businessman-with-glasses-mustache-his-head_1142-38718.jpg" alt="Client 1">
+                    <div class="information">
+                        <div class="stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        </div>
+                        <p class="names">Ramesh Shemra</p>
+                        <span>Web Developer</span>
+                    </div>
+                </div>
+                <p class="info">Akha life set kardiya mera bidulog, Gamiway ne!</p>
+                <div class="icon">
+                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="testimonial">
+                <div class="profile">
+                    <img src="https://img.freepik.com/free-photo/portrait-young-woman-wearing-glasses-3d-rendering_1142-43632.jpg" alt="Client 2">
+                    <div class="information">
+                        <div class="stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        </div>
+                        <p class="names">Shweta</p>
+                        <span>UX Designer</span>
+                    </div>
+                </div>
+                <p class="info">Omg! wooow such a banger Web app. Keeps me productive round the clock.</p>
+                <div class="icon">
+                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                </div>
+            </div>
+
+            <!-- Testimonial 3 -->
+            <div class="testimonial">
+                <div class="profile">
+                    <img src="https://img.freepik.com/free-photo/portrait-young-sad-student-being-bullied-school_23-2151395726.jpg" alt="Client 3">
+                    <div class="information">
+                        <div class="stars">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-quote-left" aria-hidden="true"></i>
+                        </div>
+                        <p class="names">ModiJi</p>
+                        <span>Software Engineer</span>
+                    </div>
+                </div>
+                <p class="info">Bhaiya aur behno! Mast Web app hai.</p>
+                <div class="icon">
+                    <i class="fa fa-quote-right" aria-hidden="true"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container animate__animated animate__infinite">
+            <h2>Contact Us</h2>
+            <p>Email: 55semwalnitin@gmail.com</p>
+            <p>Phone: +91 7536-862-785</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Gamiway. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        const sections = document.querySelectorAll('section');
+
+        const options = {
+            root: null,
+            rootMargin: '70px',
+            threshold: 0.5 
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeIn');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, options);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section.classList.contains('animate__animated', 'animate__fadeIn')){
+                section.classList.remove('animate__animated', 'animate__fadeIn');
+            }
+            section.classList.add('animate__animated', 'animate__fadeIn');
+            section.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest', speed: 'slow'});
+        }
+
+        function displayLandingAnimation(){
+            const animation = lottie.loadAnimation({
+                container: document.getElementById("mainPage"),
+                renderer: 'svg',
+                loop: false,
+                autoplay: true,
+                path: 'splash.json', 
+
+            });
+
+            animation.setSpeed(2);
+
+            animation.addEventListener('complete', () => {
+            const heroSection = document.getElementById('hero');
+            heroSection.classList.remove('hidden');
+            heroSection.classList.add('slide-in');
+            animation.destroy();
+        });
+        }
+
+        displayLandingAnimation();
+    </script>
+</body>
+</html>
